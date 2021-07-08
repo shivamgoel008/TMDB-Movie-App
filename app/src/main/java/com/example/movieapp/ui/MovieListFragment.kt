@@ -45,6 +45,10 @@ class MovieListFragment : Fragment() {
 
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             (movie_list.adapter as MovieAdapter).submitList(it)
+
+            if(it.isEmpty()){
+                viewModel.fetchFromNetwork()
+            }
         })
     }
 

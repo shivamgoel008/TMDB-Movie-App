@@ -1,4 +1,7 @@
 package com.example.movieapp.data.network
 
-class TmdbMovieList {
-}
+import com.example.movieapp.data.Movie
+
+data class TmdbMovieList(
+    val results: List<Movie>
+)
