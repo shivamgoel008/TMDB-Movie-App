@@ -12,6 +12,8 @@ import retrofit2.http.GET
 interface TmdbService {
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val POSTER_BASE_URL="https://image.tmdb.org/t/p/w185"
+        const val BACKDROP_BASE_URL="https://image.tmdb.org/t/p/w300"
 
         private val retrofitService by lazy {
             // adding api key to every request

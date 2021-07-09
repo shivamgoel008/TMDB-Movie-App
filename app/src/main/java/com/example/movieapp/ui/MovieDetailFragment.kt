@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.data.Movie
+import com.example.movieapp.data.network.TmdbService
 import com.example.movieapp.readableFormat
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.list_item.movie_title
@@ -49,6 +51,15 @@ class MovieDetailFragment : Fragment() {
     private fun setData(movie: Movie) {
         movie_title.text = movie.title
         movie_overview.text = movie.overview
+
+        Glide.with(requireActivity())
+            .load(TmdbService.POSTER_BASE_URL+movie.posterPath)
+            .error(R.drawable.poster_placeholder)
+            .into(movie_poster)
+
+        Glide.with(requireActivity())
+            .load(TmdbService.BACKDROP_BASE_URL+movie.backdropPath)
+            .into(movie_backdrop)
 
         movie_release_date.text = movie.releaseDate.readableFormat()
     }
