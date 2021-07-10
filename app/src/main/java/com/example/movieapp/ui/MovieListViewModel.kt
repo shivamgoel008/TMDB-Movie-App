@@ -31,4 +31,12 @@ class MovieListViewModel(application: Application): AndroidViewModel(application
             }
         }
     }
+
+    fun refreshData(){
+        viewModelScope.launch (Dispatchers.IO) {
+            repo.deleteAllData()
+        }
+
+        fetchFromNetwork()
+    }
 }

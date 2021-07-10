@@ -73,7 +73,13 @@ class MovieListFragment : Fragment() {
                     status_error.visibility=View.VISIBLE
                 }
             }
+
+            swipe_refresh.isRefreshing=false
         })
+
+        swipe_refresh.setOnRefreshListener {
+            viewModel.refreshData()
+        }
     }
 
     private fun showErrorMessage(errorCode: ErrorCode?,message: String?){

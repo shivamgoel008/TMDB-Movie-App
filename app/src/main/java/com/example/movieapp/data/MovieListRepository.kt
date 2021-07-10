@@ -34,5 +34,7 @@ class MovieListRepository(context: Application){
             LoadingStatus.error(ErrorCode.UNKNOWN_ERROR,ex.message)
         }
 
-
+    suspend fun deleteAllData(){
+        movieListDao.deleteAllData()
+    }
 }
